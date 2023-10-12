@@ -1,74 +1,82 @@
-*, *:after, *:before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Open Sans";
+.FormStepList {
+    display: flex;
+    overflow: hidden;
+    margin: 5em auto;
+    width: 600px;
+}
+
+.FormStepList-item {
+    flex: 1 1 50px;
+    text-align: center;
+    list-style: none;
+
+    &:before {
+        content: none !important;
+        display: none !important;
+    }
 }
 
 
-/* Form Progress */
-.progress {
-  width: 1000px;
-  margin: 20px auto;
-  text-align: center;
-}
-.progress .circle,
-.progress .bar {
-  display: inline-block;
-  background: #fff;
-  width: 40px; height: 40px;
-  border-radius: 40px;
-  border: 1px solid #d5d5da;
-}
-.progress .bar {
-  position: relative;
-  width: 80px;
-  height: 6px;
-  top: -33px;
-  margin-left: -5px;
-  margin-right: -5px;
-  border-left: none;
-  border-right: none;
-  border-radius: 0;
-}
-.progress .circle .label {
-  display: inline-block;
-  width: 32px;
-  height: 32px;
-  line-height: 32px;
-  border-radius: 32px;
-  margin-top: 3px;
-  color: #b5b5ba;
-  font-size: 17px;
-}
-.progress .circle .title {
-  color: #b5b5ba;
-  font-size: 13px;
-  line-height: 30px;
-  margin-left: -5px;
+.FormStepIcon {
+    display: inline-block;
+    width: 50px;
+    text-align: center;
+    position: relative;
+
+    &.is-active {
+        .FormStepIcon-circle {
+            background: #43B69A;
+            border: 4px solid #8ED3C2;
+            color: #fff;
+        }
+    }
+
+    &.is-passed {
+        &:after {
+            background: #43B69A;
+        }
+
+        .FormStepIcon-circle {
+            background: #43B69A;
+            color: #fff;
+        }
+    }
+
+    &:after {
+        content: '';
+        background: #D4D4D4;
+        position: absolute;
+        right: -1000%;
+        top: 20px;
+        left: 10px;
+        height: 4px;
+        z-index: 1;
+    }
+
+    &.FormStepIcon--last {
+        &:after {
+            background: #fff;
+        }
+    }
 }
 
-/* Done / Active */
-.progress .bar.done,
-.progress .circle.done {
-  background: #eee;
+.FormStepIcon-circle {
+    background: #D4D4D4;
+    color: #A9A9A9;
+    font-size: 16px;
+    font-weight: bold;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    z-index: 2;
 }
-.progress .bar.active {
-  background: linear-gradient(to right, #EEE 40%, #FFF 60%);
-}
-.progress .circle.done .label {
-  color: #FFF;
-  background: #8bc435;
-  box-shadow: inset 0 0 2px rgba(0,0,0,.2);
-}
-.progress .circle.done .title {
-  color: #444;
-}
-.progress .circle.active .label {
-  color: #FFF;
-  background: #0c95be;
-  box-shadow: inset 0 0 2px rgba(0,0,0,.2);
-}
-.progress .circle.active .title {
-  color: #0c95be;
+
+.FormStepIcon-title {
+    display: block;
+    font-size: 0.7em;
+    margin-top: 0.5em;
 }
